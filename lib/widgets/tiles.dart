@@ -100,8 +100,9 @@ class BasicTile extends StatelessWidget {
   final VoidCallback onTap;
   final MorseCharacter morseCharacter;
   final bool isConnected;
+  final bool didFindService;
 
-  BasicTile({this.onTap, this.morseCharacter, this.isConnected});
+  BasicTile({this.onTap, this.morseCharacter, this.isConnected, this.didFindService});
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +123,7 @@ class BasicTile extends StatelessWidget {
                 ),
                 color: Colors.indigoAccent,
                 textColor: Colors.white,
-                onPressed: onTap,
+                onPressed: didFindService ? onTap : null,
               )
             : null);
   }

@@ -77,6 +77,12 @@ class QueueBloc {
       ];
 
       for (MorseSymbol symbol in morse.code) {
+        print("DEVICE: " + device.toString());
+        print("DEVICE_STATE: " + device.state.toString());
+
+        print(device == null ? "DEVICE is NULL" : "DEVICE is NOT NULL");
+        print(characteristic == null ? "CHARACTERISTIC is NULL" : "CHARACTERISTIC is NOT NULL");
+
         await device.writeCharacteristic(characteristic, motors[motorIndex],
             type: CharacteristicWriteType.withResponse);
         await Future.delayed(Duration(milliseconds: symbol.duration));

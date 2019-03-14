@@ -12,8 +12,9 @@ import 'package:provider/provider.dart';
 class BasicPage extends StatefulWidget {
   final BluetoothCharacteristic characteristic;
   final BluetoothDevice device;
+  final BluetoothService service;
 
-  BasicPage({this.characteristic, this.device});
+  BasicPage({this.characteristic, this.device, this.service});
 
   @override
   BasicPageState createState() {
@@ -70,6 +71,7 @@ class BasicPageState extends State<BasicPage> {
       itemBuilder: (context, index) {
         return BasicTile(
             isConnected: (widget.device != null),
+            didFindService: (widget.service != null),
             morseCharacter: QueueBloc.morseCharacters[index],
             onTap: () => queueBloc.playMorseCharacter(index));
       },

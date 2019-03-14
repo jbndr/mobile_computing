@@ -86,6 +86,7 @@ class _MyAppState extends State<MyApp> {
     }
     if (isConnected) {
       tiles.add(_buildDeviceStateTile());
+      _findTecoService();
     } else {
       tiles.addAll(_buildScanResultTiles());
     }
@@ -99,7 +100,7 @@ class _MyAppState extends State<MyApp> {
       flatButton = SizedBox();
     }
 
-    _pages[1] = BasicPage(characteristic: tecoCharacteristic, device: device);
+    _pages[1] = BasicPage(characteristic: tecoCharacteristic, device: device, service: tecoService);
     _pages[2] = BluetoothPage(isScanning: isScanning, tiles: tiles);
 
     return MaterialApp(
@@ -244,8 +245,6 @@ class _MyAppState extends State<MyApp> {
         });
       }
     });
-
-    _findService();
   }
 
   _disconnect() {
@@ -257,6 +256,8 @@ class _MyAppState extends State<MyApp> {
     deviceConnection = null;
     setState(() {
       device = null;
+      tecoService = null;
+      tecoCharacteristic = null;
     });
   }
 
@@ -282,9 +283,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  Future _findService() async {
-    List<BluetoothService> services = await device.discoverServices();
-
+  Future _findTecoService() async {
     var foundService;
 
     services.forEach((service) {
@@ -349,5 +348,13 @@ class _MyAppState extends State<MyApp> {
         );
       },
     );
+  }
+
+  Widget _buildFindService() {
+    return FlatButton(
+      child: Text("Find Service"),
+      onPressed: _findTecoService,
+    );
+
   }
 }
