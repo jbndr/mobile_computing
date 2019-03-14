@@ -5,23 +5,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:mobile_computing/logic/queue_logic.dart';
 import 'package:mobile_computing/model/MorseCharacter.dart';
-import 'package:mobile_computing/widgets/character_box.dart';
+import 'package:mobile_computing/widgets/queue_box.dart';
 import 'package:mobile_computing/widgets/tiles.dart';
 import 'package:provider/provider.dart';
 
-class BasicsPage extends StatefulWidget {
+class BasicPage extends StatefulWidget {
   final BluetoothCharacteristic characteristic;
   final BluetoothDevice device;
 
-  BasicsPage({this.characteristic, this.device});
+  BasicPage({this.characteristic, this.device});
 
   @override
-  BasicsPageState createState() {
-    return new BasicsPageState();
+  BasicPageState createState() {
+    return new BasicPageState();
   }
 }
 
-class BasicsPageState extends State<BasicsPage> {
+class BasicPageState extends State<BasicPage> {
   QueueBloc queueBloc;
 
   @override
@@ -50,7 +50,7 @@ class BasicsPageState extends State<BasicsPage> {
                         scrollDirection: Axis.horizontal,
                         itemCount: queue.length,
                         itemBuilder: (context, index) {
-                          return CharacterBox(
+                          return QueueBox(
                               character: queue.elementAt(index).toString(),
                               isCurrent: index == 0);
                         }));
@@ -64,7 +64,8 @@ class BasicsPageState extends State<BasicsPage> {
   }
 
   ListView _buildList(context) {
-    return ListView.builder(
+    return ListView.separated(
+      separatorBuilder: (context, index) => Divider(height: 25.0,),
       itemCount: QueueBloc.morseCharacters.length,
       itemBuilder: (context, index) {
         return BasicTile(
@@ -73,10 +74,5 @@ class BasicsPageState extends State<BasicsPage> {
             onTap: () => queueBloc.playMorseCharacter(index));
       },
     );
-  }
-
-  @override
-  String toStringShort() {
-    return "Basics";
   }
 }

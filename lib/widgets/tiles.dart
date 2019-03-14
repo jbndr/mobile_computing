@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:mobile_computing/model/MorseCharacter.dart';
+import 'package:mobile_computing/model/MorseSymbol.dart';
+import 'package:mobile_computing/widgets/character_box.dart';
+import 'package:mobile_computing/widgets/symbol_box.dart';
 
 class ScanResultTile extends StatelessWidget {
   const ScanResultTile({Key key, this.result, this.onTap}) : super(key: key);
@@ -86,7 +89,7 @@ class ScanResultTile extends StatelessWidget {
               style: TextStyle(fontSize: 12.0),
             ),
           ),
-          color: Colors.black,
+          color: Colors.indigoAccent,
           textColor: Colors.white,
           onPressed: (result.advertisementData.connectable) ? onTap : null,
         ));
@@ -103,27 +106,34 @@ class BasicTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        leading: Text(morseCharacter.character),
-        title: Text(
-          morseCharacter.getCode(),
-          style: TextStyle(fontSize: 24.0),
-        ),
+        leading: CharacterBox(character: morseCharacter.character),
+        title: _buildSymbolWidget(morseCharacter.code),
         trailing: isConnected
             ? RaisedButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(3.0)),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                      vertical: 0.0, horizontal: 14.0),
+                      vertical: 0.0, horizontal: 20.0),
                   child: Text(
-                    'PLAY',
+                    'SEND',
                     style: TextStyle(fontSize: 12.0),
                   ),
                 ),
-                color: Colors.black,
+                color: Colors.indigoAccent,
                 textColor: Colors.white,
                 onPressed: onTap,
               )
             : null);
+  }
+
+  Widget _buildSymbolWidget(List<MorseSymbol> symbol) {
+    List<SymbolBox> symbolWidgets = new List<SymbolBox>();
+
+    symbol.forEach((morseSymbol) {
+      symbolWidgets.add(SymbolBox(symbol: morseSymbol.symbol));
+    });
+
+    return Row(children: symbolWidgets);
   }
 }

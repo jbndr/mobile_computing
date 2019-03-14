@@ -30,7 +30,7 @@ class BluetoothPage extends StatelessWidget {
 
   Widget _buildProgressBar() {
     return LinearProgressIndicator(
-      backgroundColor: Colors.tealAccent,
+      backgroundColor: Colors.indigoAccent,
     );
   }
 }

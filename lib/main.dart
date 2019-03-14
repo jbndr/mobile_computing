@@ -21,7 +21,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _selectedTab = 0;
-  List<Widget> _pages = [HomePage(), BasicsPage(), BluetoothPage()];
+  List<Widget> _pages = [HomePage(), BasicPage(), BluetoothPage()];
+  List<String> _names = ["Home", "Basics", "Bluetooth"];
 
   FlutterBlue flutterBlue = FlutterBlue.instance;
 
@@ -85,9 +86,6 @@ class _MyAppState extends State<MyApp> {
     }
     if (isConnected) {
       tiles.add(_buildDeviceStateTile());
-      tiles.add(_buildServiceTest());
-      tiles.add(_buildStartButton());
-      tiles.add(_buildStopButton());
     } else {
       tiles.addAll(_buildScanResultTiles());
     }
@@ -101,17 +99,17 @@ class _MyAppState extends State<MyApp> {
       flatButton = SizedBox();
     }
 
-    _pages[1] = BasicsPage(characteristic: tecoCharacteristic, device: device);
+    _pages[1] = BasicPage(characteristic: tecoCharacteristic, device: device);
     _pages[2] = BluetoothPage(isScanning: isScanning, tiles: tiles);
 
     return MaterialApp(
       title: "Mobile Computing App",
-      theme: ThemeData(primarySwatch: Colors.teal),
+      theme: ThemeData(primarySwatch: Colors.indigo),
       home: Provider(
         value: QueueBloc(device, tecoCharacteristic),
         child: Scaffold(
           appBar: AppBar(
-            title: Text(_pages[_selectedTab].toStringShort()),
+            title: Text(_names[_selectedTab]),
             actions: <Widget>[flatButton],
           ),
           body: _pages[_selectedTab],
@@ -194,7 +192,7 @@ class _MyAppState extends State<MyApp> {
     return new Container(
       color: state == BluetoothState.off
           ? Colors.red
-          : ((state == BluetoothState.turningOn) ? Colors.teal : Colors.black),
+          : ((state == BluetoothState.turningOn) ? Colors.green : Colors.orange),
       child: new ListTile(
         title: new Text(
           'Bluetooth adapter is ${state.toString().substring(15)}',
@@ -246,6 +244,8 @@ class _MyAppState extends State<MyApp> {
         });
       }
     });
+
+    _findService();
   }
 
   _disconnect() {
@@ -282,14 +282,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  Widget _buildServiceTest() {
-    return FlatButton(
-      child: Text("Find"),
-      onPressed: _testButton,
-    );
-  }
-
-  Future _testButton() async {
+  Future _findService() async {
     List<BluetoothService> services = await device.discoverServices();
 
     var foundService;
@@ -313,36 +306,6 @@ class _MyAppState extends State<MyApp> {
       tecoService = foundService;
       tecoCharacteristic = foundCharacteristic;
     });
-  }
-
-  Widget _buildStartButton() {
-    return FlatButton(
-      child: Text("Start"),
-      onPressed: _startButton,
-    );
-  }
-
-  Widget _buildStopButton() {
-    return FlatButton(
-      child: Text("Stop"),
-      onPressed: _stopButton,
-    );
-  }
-
-  Future _startButton() async {
-    if (tecoCharacteristic == null) {
-      return;
-    }
-    await device
-        .writeCharacteristic(tecoCharacteristic, [0xFF, 0xFF, 0xFF, 0xFF]);
-  }
-
-  Future _stopButton() async {
-    if (tecoCharacteristic == null) {
-      return;
-    }
-    await device
-        .writeCharacteristic(tecoCharacteristic, [0x00, 0x00, 0x00, 0x00]);
   }
 
   Widget _buildBasicsPageActions() {
