@@ -1,4 +1,4 @@
-import 'package:mobile_computing/model/MorseSymbol.dart';
+import 'package:mobile_computing/model/morse_symbol.dart';
 
 class MorseCharacter {
   final String character;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
-import 'package:mobile_computing/model/MorseCharacter.dart';
-import 'package:mobile_computing/model/MorseSymbol.dart';
-import 'package:mobile_computing/widgets/character_box.dart';
-import 'package:mobile_computing/widgets/symbol_box.dart';
+import 'package:mobile_computing/model/morse_character.dart';
+import 'package:mobile_computing/model/morse_symbol.dart';
+import 'package:mobile_computing/ui/character_box.dart';
+import 'package:mobile_computing/ui/symbol_box.dart';
 
 class ScanResultTile extends StatelessWidget {
   const ScanResultTile({Key key, this.result, this.onTap}) : super(key: key);

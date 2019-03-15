@@ -2,12 +2,12 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:flutter_blue/flutter_blue.dart';
-import 'package:mobile_computing/model/MorseCharacter.dart';
-import 'package:mobile_computing/model/MorseSymbol.dart';
+import 'package:mobile_computing/model/morse_character.dart';
+import 'package:mobile_computing/model/morse_symbol.dart';
 
 class QueueBloc {
 
-  QueueBloc(this.device, this.characteristic);
+  QueueBloc({this.device, this.characteristic, this.service});
 
   final StreamController<bool> _pausableController = StreamController.broadcast();
   Stream<bool> get pausableStream => _pausableController.stream;
@@ -18,11 +18,13 @@ class QueueBloc {
 
   final BluetoothCharacteristic characteristic;
   final BluetoothDevice device;
+  final BluetoothService service;
 
   final Queue<MorseCharacter> queue = Queue();
 
   bool currentlyPlaying = false;
-  bool _isPaused = false;
+  bool isPaused = false;
+  bool _deleteQueue = false;
 
   static final List<MorseCharacter> morseCharacters = [
     MorseCharacter(character: "A", code: [Dit(), Dah()]),
@@ -58,14 +60,18 @@ class QueueBloc {
 
   void setPausable(bool isPausable) {
     _pausableController.add(isPausable);
-    _isPaused = !isPausable;
+    isPaused = !isPausable;
 
-    if (!_isPaused) playNextCharacterFromQueue();
+    if (!isPaused) playNextCharacterFromQueue();
   }
 
   void playNextCharacterFromQueue() async {
 
-    if (queue.isNotEmpty && !_isPaused) {
+    if (_deleteQueue){
+      _resetQueue();
+    }
+
+    if (queue.isNotEmpty && !isPaused) {
       currentlyPlaying = true;
       var morse = queue.first;
       var motorIndex = 0;
@@ -108,6 +114,22 @@ class QueueBloc {
     if (queue.length == 1) await Future.delayed(Duration(milliseconds: 300));
 
     if (!currentlyPlaying) playNextCharacterFromQueue();
+  }
+
+  void _resetQueue(){
+    queue.clear();
+    _queueController.add(queue);
+    currentlyPlaying = false;
+    isPaused = false;
+    _deleteQueue = false;
+  }
+
+  void deleteQueue() {
+    if (isPaused){
+      _resetQueue();
+    } else {
+      _deleteQueue = true;
+    }
   }
 }
 
