@@ -37,31 +37,36 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget _buildDeviceNotConnected() {
-    return Center(
-      child: Column(
-        children: <Widget>[
-          _buildBluetoothIcon(),
-          SizedBox(height: 20),
-          Text("No device connected!", style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold, color: Colors.black)),
-          Text("Please connect to your device.", style: TextStyle(fontSize: 16.0, color: Colors.grey))
-        ],
+    return Expanded(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _buildBluetoothIcon(),
+            SizedBox(height: 20),
+            Text("No device connected!", style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold, color: Colors.black)),
+            Text("Please connect to your device.", style: TextStyle(fontSize: 16.0, color: Colors.grey))
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildHomePage() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          HomeBox(title: "Encode", color: Colors.teal),
-          SizedBox(height: 20),
-          HomeBox(title: "Decode", color: Colors.pink),
-          SizedBox(height: 20),
-          HomeBox(title: "Device", color: Colors.amber),
-          SizedBox(height: 20),
-          HomeBox(title: "Quiz", color: Colors.deepPurple),
-        ],),
+    return Expanded(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            HomeBox(title: "Encode", color: Colors.teal),
+            SizedBox(height: 20),
+            HomeBox(title: "Decode", color: Colors.pink),
+            SizedBox(height: 20),
+            HomeBox(title: "Device", color: Colors.amber),
+            SizedBox(height: 20),
+            HomeBox(title: "Quiz", color: Colors.deepPurple),
+          ],),
+      ),
     );
   }
 
