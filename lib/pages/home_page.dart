@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_computing/logic/queue_logic.dart';
-import 'package:mobile_computing/ui/home_box.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,6 +11,8 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   QueueBloc queueBloc;
+
+  bool isPlaying = false;
   bool get isConnected => (queueBloc.device != null);
 
   @override
@@ -25,7 +26,7 @@ class HomePageState extends State<HomePage> {
     return Column(
       children: <Widget>[
         _buildAppBar(),
-        isConnected ? _buildHomePage() : _buildDeviceNotConnected()
+        !isConnected ? _buildHomePage() : _buildDeviceNotConnected()
       ],
     );
   }
@@ -40,12 +41,16 @@ class HomePageState extends State<HomePage> {
     return Expanded(
       child: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _buildBluetoothIcon(),
             SizedBox(height: 20),
-            Text("No device connected!", style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold, color: Colors.black)),
-            Text("Please connect to your device.", style: TextStyle(fontSize: 16.0, color: Colors.grey))
+            Text("No device connected!",
+                style: TextStyle(
+                    fontSize: 28.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black)),
+            Text("Please connect to your device.",
+                style: TextStyle(fontSize: 16.0, color: Colors.grey))
           ],
         ),
       ),
@@ -53,30 +58,56 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget _buildHomePage() {
-    return Expanded(
-      child: Center(
+    if (isPlaying){
+      return Container();
+    } else {
+      return Expanded(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            HomeBox(title: "Encode", color: Colors.teal),
-            SizedBox(height: 20),
-            HomeBox(title: "Decode", color: Colors.pink),
-            SizedBox(height: 20),
-            HomeBox(title: "Device", color: Colors.amber),
-            SizedBox(height: 20),
-            HomeBox(title: "Quiz", color: Colors.deepPurple),
-          ],),
+            _buildPlayButton(),
+          ],
+        ),
+      );
+    }
+  }
+
+  Widget _buildPlayButton() {
+    return Container(
+      child: GestureDetector(
+        onTap: (){
+          setState(() {
+            isPlaying = true;
+          });
+        },
+        child: Container(
+            decoration: BoxDecoration(
+              color: Colors.indigoAccent,
+              borderRadius: BorderRadius.all(Radius.circular(100.0)),
+            ),
+            padding: const EdgeInsets.all(20.0),
+            child: Icon(
+              Icons.play_arrow,
+              size: 150,
+              color: Colors.white,
+            )),
       ),
     );
   }
 
+
   Widget _buildBluetoothIcon() {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.indigo,
-        borderRadius: BorderRadius.all(Radius.circular(100.0)),
-      ),
-      padding: const EdgeInsets.all(20.0),
-        child: Icon(Icons.bluetooth, size: 150, color: Colors.white,));
+        decoration: BoxDecoration(
+          color: Colors.indigo,
+          borderRadius: BorderRadius.all(Radius.circular(100.0)),
+        ),
+        padding: const EdgeInsets.all(20.0),
+        child: Icon(
+          Icons.bluetooth,
+          size: 150,
+          color: Colors.white,
+        ));
   }
+  
 }

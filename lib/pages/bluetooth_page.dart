@@ -32,7 +32,7 @@ class BluetoothPageState extends State<BluetoothPage> {
 
   /// Device
   BluetoothDevice device;
-  bool get isConnected => (device != null);
+  bool get isConnecting => (device != null);
   StreamSubscription deviceConnection;
   StreamSubscription deviceStateSubscription;
   List<BluetoothService> services = new List();
@@ -88,11 +88,11 @@ class BluetoothPageState extends State<BluetoothPage> {
     var tiles = new List<Widget>();
 
     if (state == BluetoothState.off || state == BluetoothState.turningOn) tiles.add(_buildAlertTile());
-    if (isConnected) {
-      print("CONNECTED");
+    if (isConnecting) {
+      print("IS CONNECTING");
       tiles.add(_buildDeviceStateTile());
     } else {
-      print("DISCONNECTED");
+      print("IS NOT CONNECTING");
       tiles.addAll(_buildScanResultTiles());
     }
 
@@ -172,7 +172,7 @@ class BluetoothPageState extends State<BluetoothPage> {
       return SizedBox();
     }
 
-    if (isConnected) {
+    if (isConnecting) {
       return FlatButton(
         onPressed: _disconnect,
         child: Text("DISCONNECT", style: style),
@@ -223,15 +223,20 @@ class BluetoothPageState extends State<BluetoothPage> {
               onDone: _disconnect,
             );
 
+    print("MOUNTED1: " + mounted.toString());
     // Update the connection state immediately
     device.state.then((s) {
       setState(() {
         deviceState = s;
       });
     });
+    print("MOUNTED2: " + mounted.toString());
 
     // Subscribe to connection changes
     deviceStateSubscription = device.onStateChanged().listen((s) {
+
+      print("MOUNTED3: " + mounted.toString());
+      print(deviceState);
       setState(() {
         deviceState = s;
       });
@@ -247,12 +252,19 @@ class BluetoothPageState extends State<BluetoothPage> {
   }
 
   _disconnect() {
+    print("DISONNECTING");
     valueChangedSubscriptions.forEach((uuid, sub) => sub.cancel());
     valueChangedSubscriptions.clear();
     deviceStateSubscription?.cancel();
     deviceStateSubscription = null;
-    widget.bluetooth?.dispose();
-    widget.onConnect(Bluetooth.disconnect(null, null, null));
+    setState(() {
+      widget.bluetooth?.dispose();
+      widget.onConnect(Bluetooth.disconnect(null, null, null));
+      device = null;
+      deviceState = BluetoothDeviceState.disconnected;
+      tecoService = null;
+      tecoCharacteristic = null;
+    });
   }
 
   void _startScan() {
