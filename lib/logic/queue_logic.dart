@@ -6,14 +6,16 @@ import 'package:mobile_computing/model/morse_character.dart';
 import 'package:mobile_computing/model/morse_symbol.dart';
 
 class QueueBloc {
-
   QueueBloc({this.device, this.characteristic, this.service});
 
-  final StreamController<bool> _pausableController = StreamController.broadcast();
+  final StreamController<bool> _pausableController =
+      StreamController.broadcast();
+
   Stream<bool> get pausableStream => _pausableController.stream;
 
   final StreamController<Queue<MorseCharacter>> _queueController =
       StreamController.broadcast();
+
   Stream<Queue<MorseCharacter>> get queueStream => _queueController.stream;
 
   final BluetoothCharacteristic characteristic;
@@ -66,8 +68,7 @@ class QueueBloc {
   }
 
   void playNextCharacterFromQueue() async {
-
-    if (_deleteQueue){
+    if (_deleteQueue) {
       _resetQueue();
     }
 
@@ -87,7 +88,9 @@ class QueueBloc {
         print("DEVICE_STATE: " + device.state.toString());
 
         print(device == null ? "DEVICE is NULL" : "DEVICE is NOT NULL");
-        print(characteristic == null ? "CHARACTERISTIC is NULL" : "CHARACTERISTIC is NOT NULL");
+        print(characteristic == null
+            ? "CHARACTERISTIC is NULL"
+            : "CHARACTERISTIC is NOT NULL");
 
         await device.writeCharacteristic(characteristic, motors[motorIndex],
             type: CharacteristicWriteType.withResponse);
@@ -116,7 +119,7 @@ class QueueBloc {
     if (!currentlyPlaying) playNextCharacterFromQueue();
   }
 
-  void _resetQueue(){
+  void _resetQueue() {
     queue.clear();
     _queueController.add(queue);
     currentlyPlaying = false;
@@ -125,11 +128,38 @@ class QueueBloc {
   }
 
   void deleteQueue() {
-    if (isPaused){
+    if (isPaused) {
       _resetQueue();
     } else {
       _deleteQueue = true;
     }
   }
-}
 
+  Future playCharacter(MorseCharacter character) async {
+    var morse = character;
+    var motorIndex = 0;
+    var motors = [
+      [0x00, 0x00, 0x00, 0xFF],
+      [0x00, 0x00, 0xFF, 0x00],
+      [0x00, 0xFF, 0x00, 0x00],
+      [0xFF, 0x00, 0x00, 0x00]
+    ];
+
+    for (MorseSymbol symbol in morse.code) {
+      print("DEVICE: " + device.toString());
+      print("DEVICE_STATE: " + device.state.toString());
+
+      print(device == null ? "DEVICE is NULL" : "DEVICE is NOT NULL");
+      print(characteristic == null
+          ? "CHARACTERISTIC is NULL"
+          : "CHARACTERISTIC is NOT NULL");
+
+      await device.writeCharacteristic(characteristic, motors[motorIndex],
+          type: CharacteristicWriteType.withResponse);
+      await Future.delayed(Duration(milliseconds: symbol.duration));
+      await device.writeCharacteristic(characteristic, [0x00, 0x00, 0x00, 0x00],
+          type: CharacteristicWriteType.withResponse);
+      motorIndex++;
+    }
+  }
+}

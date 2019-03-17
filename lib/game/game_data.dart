@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:mobile_computing/model/morse_character.dart';
 import 'package:mobile_computing/model/morse_symbol.dart';
 
@@ -33,4 +35,37 @@ class GameData{
     MorseCharacter(character: "Ö", code: [Dah(), Dah(), Dah(), Dit()]),
     MorseCharacter(character: "Ü", code: [Dit(), Dit(), Dah(), Dah()]),
   ];
+
+  factory GameData() {
+    List<MorseCharacter> solutions = _getRandom();
+    MorseCharacter right = solutions[0];
+    return GameData._(solutions..shuffle(), right);
+
+  }
+
+  GameData._(this._possible, this.solution);
+
+  final List<MorseCharacter> _possible;
+  final MorseCharacter solution;
+
+  List<MorseCharacter> getPossibleSolutions() {
+    return _possible;
+  }
+
+  bool checkSolution(MorseCharacter proposal) => solution == proposal;
+
+  static List<MorseCharacter> _getRandom() {
+    List<int> indexList = List();
+
+    var rng = new Random();
+    int index;
+    while(indexList.length != 4){
+      index = rng.nextInt(morseCharacters.length);
+      if (!indexList.contains(index)){
+        indexList.add(index);
+      }
+    }
+
+    return [morseCharacters[indexList[0]], morseCharacters[indexList[1]], morseCharacters[indexList[2]], morseCharacters[indexList[3]]];
+  }
 }

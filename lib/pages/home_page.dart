@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_computing/logic/queue_logic.dart';
+import 'package:mobile_computing/pages/game.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
+
   @override
   HomePageState createState() {
     return new HomePageState();
   }
+
 }
 
 class HomePageState extends State<HomePage> {
+
   QueueBloc queueBloc;
 
   bool isPlaying = false;
@@ -26,7 +30,7 @@ class HomePageState extends State<HomePage> {
     return Column(
       children: <Widget>[
         _buildAppBar(),
-        !isConnected ? _buildHomePage() : _buildDeviceNotConnected()
+        isConnected ? _buildHomePage() : _buildDeviceNotConnected()
       ],
     );
   }
@@ -41,6 +45,7 @@ class HomePageState extends State<HomePage> {
     return Expanded(
       child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _buildBluetoothIcon(),
             SizedBox(height: 20),
@@ -59,7 +64,9 @@ class HomePageState extends State<HomePage> {
 
   Widget _buildHomePage() {
     if (isPlaying){
-      return Container();
+      return Expanded(
+        child: Game(queueBloc),
+      );
     } else {
       return Expanded(
         child: Column(
