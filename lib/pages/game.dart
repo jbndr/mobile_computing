@@ -35,13 +35,16 @@ class GameState extends State<Game> {
     super.initState();
     currentGame = GameData();
     points = 0;
+    currentlyPlaying = widget.queueBloc.currentlyPlaying;
+    print("CURRENTLY_PLAYING BEFORE START: " + currentlyPlaying.toString());
     widget.queueBloc.setPausable(false);
     widget.queueBloc.playCharacter(currentGame.solution);
-
     currentlyPlaying = widget.queueBloc.currentlyPlaying;
+    print("CURRENTLY_PLAYING AFTER START: " + currentlyPlaying.toString());
   }
 
   @override
+
   void didChangeDependencies() {
     super.didChangeDependencies();
     subscription = widget.queueBloc.currentlyPlayingStream.listen((it) {

@@ -110,9 +110,12 @@ class QueueBloc {
         motorIndex++;
       }
 
-      queue.removeFirst();
-      _queueController.add(queue);
-      playNextCharacterFromQueue();
+    if (queue.isNotEmpty){
+        queue.removeFirst();
+        _queueController.add(queue);
+        playNextCharacterFromQueue();
+      }
+
     } else {
       currentlyPlaying = false;
     }
