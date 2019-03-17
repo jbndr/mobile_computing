@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_computing/logic/queue_logic.dart';
 import 'package:mobile_computing/model/bluetooth.dart';
-import 'package:mobile_computing/pages/bluetooth_page.dart';
+import 'package:mobile_computing/pages/bluetooth_page_2.dart';
 import 'package:mobile_computing/pages/home_page.dart';
 import 'package:mobile_computing/pages/basics_page.dart';
 import 'package:provider/provider.dart';
