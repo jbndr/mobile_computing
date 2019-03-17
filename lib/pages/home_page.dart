@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
 
+  const HomePage();
+
   @override
   HomePageState createState() {
     return new HomePageState();
@@ -37,7 +39,15 @@ class HomePageState extends State<HomePage> {
 
   Widget _buildAppBar() {
     return AppBar(
-      title: Text("Home"),
+      leading: isPlaying ? IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: (){
+          setState(() {
+            isPlaying = false;
+          });
+        },
+      ) : null,
+      title: Text(isPlaying ? "Game" : "Home"),
     );
   }
 

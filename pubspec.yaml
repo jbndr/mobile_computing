@@ -13,6 +13,9 @@ environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
 
 dependencies:
+  pimp_my_button:
+    git:
+      url: git://github.com/Norbert515/pimp_my_button.git
   provider: ^1.6.1
   flutter_blue: ^0.5.0
   flutter:

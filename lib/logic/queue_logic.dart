@@ -11,6 +11,9 @@ class QueueBloc {
   final StreamController<bool> _pausableController =
       StreamController.broadcast();
 
+  final StreamController<bool> _currentPlayingController = StreamController.broadcast();
+  Stream<bool> get currentlyPlayingStream => _currentPlayingController.stream;
+
   Stream<bool> get pausableStream => _pausableController.stream;
 
   final StreamController<Queue<MorseCharacter>> _queueController =
@@ -24,7 +27,13 @@ class QueueBloc {
 
   final Queue<MorseCharacter> queue = Queue();
 
-  bool currentlyPlaying = false;
+  bool _currentlyPlaying = false;
+  get currentlyPlaying => _currentlyPlaying;
+  set currentlyPlaying(bool it) {
+    _currentPlayingController.add(it);
+    _currentlyPlaying = it;
+  }
+
   bool isPaused = false;
   bool _deleteQueue = false;
 
@@ -116,7 +125,7 @@ class QueueBloc {
 
     if (queue.length == 1) await Future.delayed(Duration(milliseconds: 300));
 
-    if (!currentlyPlaying) playNextCharacterFromQueue();
+    if (!_currentlyPlaying) playNextCharacterFromQueue();
   }
 
   void _resetQueue() {
@@ -136,6 +145,7 @@ class QueueBloc {
   }
 
   Future playCharacter(MorseCharacter character) async {
+    currentlyPlaying = true;
     var morse = character;
     var motorIndex = 0;
     var motors = [
@@ -163,5 +173,6 @@ class QueueBloc {
           type: CharacteristicWriteType.withResponse);
       motorIndex++;
     }
+    currentlyPlaying = false;
   }
 }

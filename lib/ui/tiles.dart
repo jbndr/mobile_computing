@@ -21,7 +21,7 @@ class ScanResultTile extends StatelessWidget {
         children: <Widget>[
           Text(
             result.device.name,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold, color: result.device.name == "TECO Wearable 4" ? Colors.indigoAccent : Colors.black),
           ),
           Text(
             result.device.id.toString(),
@@ -29,13 +29,13 @@ class ScanResultTile extends StatelessWidget {
           ),
           Row(
             children: <Widget>[
-              Icon(Icons.signal_cellular_4_bar, size: 12.0),
-              SizedBox(width: 5.0),
-              Text(result.rssi.toString() + " dBm", style: Theme.of(context).textTheme.caption),
-              SizedBox(width: 10.0),
               Icon(Icons.bluetooth, size: 12.0),
               SizedBox(width: 5.0),
               Text(btType, style: Theme.of(context).textTheme.caption),
+              SizedBox(width: 20.0),
+              Icon(Icons.signal_cellular_4_bar, size: 12.0),
+              SizedBox(width: 5.0),
+              Text(result.rssi.toString() + " dBm", style: Theme.of(context).textTheme.caption),
             ]),
         ],
       );
@@ -54,13 +54,13 @@ class ScanResultTile extends StatelessWidget {
           ),
           Row(
               children: <Widget>[
-                Icon(Icons.signal_cellular_4_bar, size: 12.0),
-                SizedBox(width: 5.0),
-                Text(result.rssi.toString() + " dBm", style: Theme.of(context).textTheme.caption),
-                SizedBox(width: 10.0),
                 Icon(Icons.bluetooth, size: 12.0),
                 SizedBox(width: 5.0),
                 Text(btType, style: Theme.of(context).textTheme.caption),
+                SizedBox(width: 20.0),
+                Icon(Icons.signal_cellular_4_bar, size: 12.0),
+                SizedBox(width: 5.0),
+                Text(result.rssi.toString() + " dBm", style: Theme.of(context).textTheme.caption),
               ]),
 
         ],
