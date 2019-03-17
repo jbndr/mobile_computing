@@ -103,17 +103,14 @@ class BluetoothPageState extends State<BluetoothPage> {
           child: Stack(
             children: <Widget>[
               isScanning ? LinearProgressIndicator(backgroundColor: Colors.indigoAccent,) : SizedBox(),
-              MediaQuery.removePadding(
-                removeTop: true,
-                child: ListView.separated(
-                  itemCount: tiles.length,
-                  separatorBuilder: (context, index) => Padding(
-                        padding:
-                            EdgeInsets.all(5),
-                        child: Divider(),
-                      ),
-                  itemBuilder: (context, index) => tiles[index],
-                ), context: context,
+              ListView.separated(
+                itemCount: tiles.length,
+                separatorBuilder: (context, index) => Padding(
+                      padding:
+                          EdgeInsets.all(5),
+                      child: Divider(),
+                    ),
+                itemBuilder: (context, index) => tiles[index],
               )
             ],
           ),

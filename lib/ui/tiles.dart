@@ -12,6 +12,8 @@ class ScanResultTile extends StatelessWidget {
   final VoidCallback onTap;
 
   Widget _buildTitle(BuildContext context) {
+    String btType = result.device.type == BluetoothDeviceType.le ? "BLE" : "UNKOWN";
+
     if (result.device.name.length > 0) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -24,7 +26,17 @@ class ScanResultTile extends StatelessWidget {
           Text(
             result.device.id.toString(),
             style: Theme.of(context).textTheme.caption,
-          )
+          ),
+          Row(
+            children: <Widget>[
+              Icon(Icons.signal_cellular_4_bar, size: 12.0),
+              SizedBox(width: 5.0),
+              Text(result.rssi.toString() + " dBm", style: Theme.of(context).textTheme.caption),
+              SizedBox(width: 10.0),
+              Icon(Icons.bluetooth, size: 12.0),
+              SizedBox(width: 5.0),
+              Text(btType, style: Theme.of(context).textTheme.caption),
+            ]),
         ],
       );
     } else {
@@ -39,7 +51,18 @@ class ScanResultTile extends StatelessWidget {
           Text(
             result.device.id.toString(),
             style: Theme.of(context).textTheme.caption,
-          )
+          ),
+          Row(
+              children: <Widget>[
+                Icon(Icons.signal_cellular_4_bar, size: 12.0),
+                SizedBox(width: 5.0),
+                Text(result.rssi.toString() + " dBm", style: Theme.of(context).textTheme.caption),
+                SizedBox(width: 10.0),
+                Icon(Icons.bluetooth, size: 12.0),
+                SizedBox(width: 5.0),
+                Text(btType, style: Theme.of(context).textTheme.caption),
+              ]),
+
         ],
       );
     }
@@ -76,8 +99,7 @@ class ScanResultTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        title: _buildTitle(context),
-        leading: Text(result.rssi.toString() + " dBm"),
+        leading: _buildTitle(context),
         trailing: RaisedButton(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(3.0)),
