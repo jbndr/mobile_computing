@@ -145,6 +145,8 @@ class QueueBloc {
       [0xFF, 0x00, 0x00, 0x00]
     ];
 
+    await Future.delayed(Duration(milliseconds: 1500));
+
     for (MorseSymbol symbol in morse.code) {
       print("DEVICE: " + device.toString());
       print("DEVICE_STATE: " + device.state.toString());

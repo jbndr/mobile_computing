@@ -63,8 +63,9 @@ class GameState extends State<Game> {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text("Points: " + points.toString()),
-          Text("Welches Zeichen wurde gesendet?",
+          Text("Points: " + points.toString(), style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+          SizedBox(height: 20),
+          Text("Which character was sent?",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0)),
           SizedBox(height: 50),
         ]..addAll([0,1,2,3].map(_getAnswerButton).toList()));
