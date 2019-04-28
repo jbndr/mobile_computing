@@ -1,0 +1,92 @@
+\chapter{Anhang}
+\chaptermark{Anhang} 
+\renewcommand{\thesection}{\Alph{section}}
+
+%
+% Abkürzungen
+%
+
+\setglossarysection{section}
+\setglossarystyle{alttree}
+\glssetwidest{SAMPLETE}
+\printglossary[numberedsection, nonumberlist, type=\acronymtype, title=Abkürzungsverzeichnis]
+\clearpage
+\chaptermark{Anhang}
+
+%
+% Abbildungsverzeichnis
+%
+
+\makeatletter\newcommand{\lofwithouttitle}{\@starttoc{lof}}\makeatother
+\section{Abbildungsverzeichnis}
+\lofwithouttitle
+\clearpage
+
+%
+% Tabellenverzeichnis
+%
+
+\makeatletter\newcommand{\lotwithouttitle}{\@starttoc{lot}}\makeatother
+\section{Tabellenverzeichnis}
+\lotwithouttitle 
+\clearpage
+
+%
+% Quelltextverzeichnis
+%
+
+\makeatletter\newcommand{\lolwithouttitle}{\@starttoc{lol}}\makeatother
+\section{Quelltextverzeichnis}
+\lolwithouttitle
+\clearpage
+
+%
+% Literaturanalyse
+%
+
+\input{chapters/literaturanalysen}
+\clearpage
+
+%
+% Glossar
+%
+
+\glossarystyle{altlist}
+\printglossary[title=Glossar, type=main, nonumberlist]
+\clearpage
+\chaptermark{Anhang}
+
+%
+% Literaturverzeichnis
+%
+
+\makeatletter
+\renewenvironment{thebibliography}[1]
+     {\section{\bibname}
+      \list{\@biblabel{\@arabic\c@enumiv}}
+           {\settowidth\labelwidth{\@biblabel{#1}}
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\makeatother
+
+\bibliography{literatur}
+
+\bibliographystyle{cmnat}
+
+%
+% Einbinden eines PDF-Anhang
+%
+%\includepdf[pages=1, pagecommand={\section{Abschnitt} \thispagestyle{scrheadings}}, scale=0.7]{chapters/anhang.pdf}
+%\includepdf[pages=2-last, pagecommand={\thispagestyle{scrheadings}}, scale=0.7]{chapters/anhang.pdf}
