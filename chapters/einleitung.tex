@@ -14,17 +14,20 @@ Onlinedienste wie bspw. Netflix, Spotify und Zalando möchten ihren Kunden eine 
 Dies hat zur Folge, dass Nutzer solcher Onlinedienste eine hohe Erwartungshaltung gegenüber ebendieser Eigenschaften haben.
 Die Dienste müssen in der Lage sein mehrere Millionen Nutzeranfragen bearbeiten zu können, ohne, dass dies zu einem Ausfall der Anwendung führt.
 Im Mittelpunkt steht dabei die Skalierbarkeit der Anwendung, sodass die Ausfallzeit eines Services minimiert werden kann.
+
 Insbesondere hat die Evolution der Softwarearchitektur von einer monolithischen Architektur zur Microservice-Architektur den Prozess der Skalierbarkeit angetrieben.
 Neben den oben genannten Unternehmen setzen Amazon, Sound Cloud und Ebay ebenfalls auf die Microservice-Architektur, um die hohe Anzahl an Nutzeranfragen bearbeiten zu können.
 Einer der Hauptvorteile ist, dass Microservices wiederverwendbare Funktionalität kapseln und dadurch unabhängig voneinander skaliert werden können.
 Wird ein bestimmter Microservice einer Web-Anwendung stärker ausgelastet, so kann darauf reagiert werden und durch eine Anpassung der Infrastruktur der Microservice unterstützt werden.
 Auf der einen Seite kann ein Rechner durch das Hinzufügen von Ressourcen wie bspw. Arbeitsspeicher oder einer Festplatte vertikal skaliert werden.
 Auf der anderen Seite können weitere Rechner dem System hinzugefügt werden und somit die Auslastung des Microservices gesteuert werden.
+
 Bei der Einhaltung der geforderten Eigenschaften nehmen die Werkzeuge Docker und Kubernetes eine zentrale Rolle ein.
 Dabei ermöglicht Docker die Isolation des Microservices von der Hardware und sichert durch die Verwaltung von Abhängigkeiten einen konsistenten Zustand, der auf jeder Maschine hergestellt werden kann. 
 Kubernetes dient zur Orchestrierung der Docker Container und abstrahiert diese.
 Dadurch ist es Kubernetes möglich die Container selbst zu verwalten und bildet somit den integralen Bestandteil zur Skalierung von Microservices.
 Die Werkzeuge ermöglichen nicht nur die Skalierung eines Microserivces, sondern auch dessen Verteilung.
+
 Schwerpunkt dieser Arbeit ist die Bewertung von Microservices im Hinblick auf die Skalierbarkeit und die Ermittlung der wesentlichen Faktoren, die bereits im Entwicklungsprozess einen Einfluss auf die Skalierfähigkeit des Mircoservices haben.
 
 \section{Fragestellungen}
@@ -43,9 +46,16 @@ Im Rahmen dieser Arbeit sollen die folgenden Fragen beantwortet werden.
 \section{Beschreibung des Demonstrators}
 Der Demonstrator dient dazu, die im vorhergehenden Abschnitt auf konzeptioneller Ebene eingeführten Fragestellungen anhand eines praktischen Beispiels zu verdeutlichen und eine Lösung aufzuzeigen.
 
+\todo{Konzept formulieren}
+
 \section{Gliederung der Arbeit}
 \label{sec:gliederung}
-In diesem Kapitel wird der Aufbau der Arbeit in Form der Kapitelstruktur aufgezeigt. Fol-gende Kapitelstruktur wird empfohlen:
+
+In Kapitel 2 werden die Grundlagen, die für das Verständnis der Inhalte der Arbeit erforderlich sind, vorgestellt.
+Anschließend wird in Kapitel 3 der Stand der Technik vorgestellt.
+Das nächste Kapitel ...
+
+\todo{Inhaltskapitel überlegen}
 
 \newpage
 \subsection*{Kapitel 2: Grundlagen}
