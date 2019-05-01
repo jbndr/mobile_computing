@@ -44,9 +44,28 @@ Im Rahmen dieser Arbeit sollen die folgenden Fragen beantwortet werden.
 \end{enumerate}
 
 \section{Beschreibung des Demonstrators}
-Der Demonstrator dient dazu, die im vorhergehenden Abschnitt auf konzeptioneller Ebene eingeführten Fragestellungen anhand eines praktischen Beispiels zu verdeutlichen und eine Lösung aufzuzeigen.
 
-\todo{Konzept formulieren}
+\todo{Weiter ausformulieren, wenn Demonstrator konkreter ist}
+
+Gegenstand dieser Arbeit ist die Einführung von Kubernetes als Teil der Infrastruktur der Forschungsgruppe.
+Hierzu wird in Abb. \ref{fig:demonstrator} eine Übersicht der verwendeten Komponenten gezeigt.
+
+Die Infrastruktur basiert auf einer CI/CD Pipeline und kann in zwei wesentliche Teile zerlegt werden.
+Der Gitlab Runner ist zentraler Bestandteil der Continious Integration (CI) und ist für die Ausführung von Tests und das Bauen eines Docker Containers zuständig.
+Eine weitere Aufgabe des Gitlab Runners ist die ständige Überprüfung des Git-Depots, sodass ein neuer Commit den Prozess der Pipeline einleitet.
+Der zweite Teil der Pipleline ist das Continious Deployment (CD), dessen Hauptaufgabe die Verteilung des Microservices ist.
+
+Zur Demonstration der Skalierung wird ein Kubernetes Cluster benötigt. 
+Im konkreten Fall wird die Google Kuberneters Eninge (KGE) verwendet, um dieses Cluster aufzusetzen.
+Als Automatisierung der Pipeline wird als Paketverwaltung Helm verwendet.
+Durch die Integration der Werkzeuge Prometheus und Grafana wird das Monitoring des Microservices sichergestellt.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/demonstrator.png}
+	\caption{Einsatz von Kubernetes bei C\&M}
+	\label{fig:demonstrator}
+\end{figure}
 
 \section{Gliederung der Arbeit}
 \label{sec:gliederung}
