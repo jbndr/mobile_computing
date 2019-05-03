@@ -33,7 +33,7 @@ Schwerpunkt dieser Arbeit ist die Bewertung von Microservices im Hinblick auf di
 \section{Fragestellungen}
 
 Im Rahmen dieser Arbeit sollen die folgenden Fragen beantwortet werden.
-\todo{Noch unklar wie sehr der Fokus auf Kubernetes liegen wird}
+\todo{Eventuell Forschungsfragen anpassen}
 
 \begin{enumerate}
 	\item \textbf{Wie sieht die aktuelle Infrastruktur der Forschungruppe aus?}
@@ -45,8 +45,6 @@ Im Rahmen dieser Arbeit sollen die folgenden Fragen beantwortet werden.
 
 \section{Beschreibung des Demonstrators}
 
-\todo{Weiter ausformulieren, wenn Demonstrator konkreter ist}
-
 Gegenstand dieser Arbeit ist die Einführung von Kubernetes als Teil der Infrastruktur der Forschungsgruppe.
 Hierzu wird in Abb. \ref{fig:demonstrator} eine Übersicht der verwendeten Komponenten gezeigt.
 
@@ -55,17 +53,14 @@ Der Gitlab Runner ist zentraler Bestandteil der Continious Integration (CI) und 
 Eine weitere Aufgabe des Gitlab Runners ist die ständige Überprüfung des Git-Depots, sodass ein neuer Commit den Prozess der Pipeline einleitet.
 Der zweite Teil der Pipleline ist das Continious Deployment (CD), dessen Hauptaufgabe die Verteilung des Microservices ist.
 
-Zur Demonstration der Skalierung wird ein Kubernetes Cluster benötigt. 
-Im konkreten Fall wird die Google Kuberneters Eninge (KGE) verwendet, um dieses Cluster aufzusetzen.
-Als Automatisierung der Pipeline wird als Paketverwaltung Helm verwendet.
-Durch die Integration der Werkzeuge Prometheus und Grafana wird das Monitoring des Microservices sichergestellt.
+\todo{Demonstrator beschreiben}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/demonstrator.png}
-	\caption{Einsatz von Kubernetes bei C\&M}
-	\label{fig:demonstrator}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{images/demonstrator.png}
+%	\caption{Einsatz von Kubernetes bei C\&M}
+%	\label{fig:demonstrator}
+%\end{figure}
 
 \section{Gliederung der Arbeit}
 \label{sec:gliederung}
