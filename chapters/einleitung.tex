@@ -19,13 +19,13 @@ Insbesondere hat die Evolution der Softwarearchitektur von einer monolithischen 
 Neben den oben genannten Unternehmen setzen Amazon, Sound Cloud und Ebay ebenfalls auf die Microservice-Architektur, um die hohe Anzahl an Nutzeranfragen bearbeiten zu können.
 Einer der Hauptvorteile ist, dass Microservices wiederverwendbare Funktionalität kapseln und dadurch unabhängig voneinander skaliert werden können.
 Wird ein bestimmter Microservice einer Web-Anwendung stärker ausgelastet, so kann darauf reagiert werden und durch eine Anpassung der Infrastruktur der Microservice unterstützt werden.
-Auf der einen Seite kann ein Rechner durch das Hinzufügen von Ressourcen wie bspw. Arbeitsspeicher oder einer Festplatte vertikal skaliert werden.
+Auf der einen Seite kann ein Rechner durch das Hinzufügen von Ressourcen, wie bspw. Arbeitsspeicher oder einer Festplatte, vertikal skaliert werden.
 Auf der anderen Seite können weitere Rechner dem System hinzugefügt werden und somit die Auslastung des Microservices gesteuert werden.
 
 Bei der Einhaltung der geforderten Eigenschaften nehmen die Werkzeuge Docker und Kubernetes eine zentrale Rolle ein.
 Dabei ermöglicht Docker die Isolation des Microservices von der Hardware und sichert durch die Verwaltung von Abhängigkeiten einen konsistenten Zustand, der auf jeder Maschine hergestellt werden kann. 
-Kubernetes dient zur Orchestrierung der Docker Container und abstrahiert diese.
-Dadurch ist es Kubernetes möglich die Container selbst zu verwalten und bildet somit den integralen Bestandteil zur Skalierung von Microservices.
+Kubernetes dient zur Orchestrierung der Docker-Container und abstrahiert diese.
+Dadurch ist es Kubernetes möglich, die Container selbst zu verwalten und bildet somit den integralen Bestandteil zur Skalierung von Microservices.
 Die Werkzeuge ermöglichen nicht nur die Skalierung eines Microserivces, sondern auch dessen Verteilung.
 
 Schwerpunkt dieser Arbeit ist die Bewertung von Microservices im Hinblick auf die Skalierbarkeit und die Ermittlung der wesentlichen Faktoren, die bereits im Entwicklungsprozess einen Einfluss auf die Skalierfähigkeit des Mircoservices haben.
@@ -33,27 +33,18 @@ Schwerpunkt dieser Arbeit ist die Bewertung von Microservices im Hinblick auf di
 \section{Fragestellungen}
 
 Im Rahmen dieser Arbeit sollen die folgenden Fragen beantwortet werden.
-\todo{Eventuell Forschungsfragen anpassen}
 
 \begin{enumerate}
 	\item \textbf{Wie sieht die aktuelle Infrastruktur der Forschungruppe aus?}
-    \item \textbf{Wie kann Kubernetes bei C\&M integriert werden?}
+    \item \textbf{Wie lässt sich die bestehende TLM-Anwendung in der Kubernetes-basierten Infrastruktur bereitstellen?}
 	\item \textbf{Welche Auswirkungen auf die Verteilung und Skalierbarkeit hat die neue Infrastruktur?}
-	\item \textbf{Welche Eigenschaften haben einen Einfluss auf die Skalierfähigkeit eines Microservices?}
+	\item \textbf{Welche Eigenschaften haben einen Einfluss auf die Skalierfähigkeit der TLM-Anwendung?}
 	\item \textbf{Inwiefern kann der Entwicklungsprozess angepasst werden, damit die Skalierbarkeit verbessert wird?}
 \end{enumerate}
 
 \section{Beschreibung des Demonstrators}
 
-Gegenstand dieser Arbeit ist die Einführung von Kubernetes als Teil der Infrastruktur der Forschungsgruppe.
-Hierzu wird in Abb. \ref{fig:demonstrator} eine Übersicht der verwendeten Komponenten gezeigt.
-
-Die Infrastruktur basiert auf einer CI/CD Pipeline und kann in zwei wesentliche Teile zerlegt werden.
-Der Gitlab Runner ist zentraler Bestandteil der Continious Integration (CI) und ist für die Ausführung von Tests und das Bauen eines Docker Containers zuständig.
-Eine weitere Aufgabe des Gitlab Runners ist die ständige Überprüfung des Git-Depots, sodass ein neuer Commit den Prozess der Pipeline einleitet.
-Der zweite Teil der Pipleline ist das Continious Deployment (CD), dessen Hauptaufgabe die Verteilung des Microservices ist.
-
-\todo{Demonstrator beschreiben}
+\todo{Ziel: Bereitstellung der TLM-Anwendung in einer Kubernets-basierten Infrastruktur}
 
 %\begin{figure}[h]
 %	\centering
