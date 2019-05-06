@@ -35,7 +35,7 @@ Schwerpunkt dieser Arbeit ist die Bewertung von Microservices im Hinblick auf di
 Im Rahmen dieser Arbeit sollen die folgenden Fragen beantwortet werden.
 
 \begin{enumerate}
-	\item \textbf{Wie sieht die aktuelle Infrastruktur der Forschungruppe aus?}
+	\item \textbf{Wie sieht die aktuelle Infrastruktur der Forschungsgruppe aus?}
     \item \textbf{Wie lässt sich die bestehende TLM-Anwendung in der Kubernetes-basierten Infrastruktur bereitstellen?}
 	\item \textbf{Welche Auswirkungen auf die Verteilung und Skalierbarkeit hat die neue Infrastruktur?}
 	\item \textbf{Welche Eigenschaften haben einen Einfluss auf die Skalierfähigkeit der TLM-Anwendung?}
@@ -44,14 +44,28 @@ Im Rahmen dieser Arbeit sollen die folgenden Fragen beantwortet werden.
 
 \section{Beschreibung des Demonstrators}
 
+Die vorliegende Arbeit beschäftigt sich mit der Einführung einer Kubernetes-basierten Infrastruktur bei C\&M.
+Hierzu wird ein Konzept vorgestellt, welches die Bereitstellung der TodoListManagement-Anwendung in ebendieser Infrastruktur demonstriert.
+Abbildung \ref{fig:demonstrator} veranschaulicht die verwendeten Komponenten.
+
+Ausgangspunkt ist die Entwicklung einer Anwendung mithilfe eines Versionskontrollsystems, wobei im Folgenden Git angenommen wird. 
+Das Git-Repository wird gehostet 
+
+- Demonstrator als Konzept für Infrastruktur
+	- Entwickler
+	- Versionskontrolle (Code Repository)
+	- Continious Integration Server
+	- Docker Registry
+	- Deployment Cluster (Kubernetes)
+
 \todo{Ziel: Bereitstellung der TLM-Anwendung in einer Kubernets-basierten Infrastruktur}
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=0.8\textwidth]{images/demonstrator.png}
-%	\caption{Einsatz von Kubernetes bei C\&M}
-%	\label{fig:demonstrator}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/demonstrator.png}
+	\caption{Einsatz von Kubernetes bei C\&M}
+	\label{fig:demonstrator}
+\end{figure}
 
 \section{Gliederung der Arbeit}
 \label{sec:gliederung}
