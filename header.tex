@@ -2,7 +2,6 @@
 %==============================================================================
 % Dokument einrichten und Pakete laden
 %==============================================================================
-
 \documentclass[
 	pdftex,				% PDFTex verwenden da ausschliesslich ein PDF erzeugt wird.
 	a4paper, twoside,	% Verwenden von DIN A4 Papier.
@@ -25,8 +24,6 @@
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-
-\usepackage{scrhack}
 
 \usepackage[printonlyused]{acronym}
 \usepackage{multicol}
@@ -280,3 +277,27 @@
 \usepackage{esvect}
 %\usepackage{subfigure}
 \floatname{algorithm}{Algorithmus}
+
+\usepackage{minted}
+\definecolor{mintedbackground}{rgb}{0.95,0.95,0.95}
+\newmintedfile[yamlcode]{yaml}{
+bgcolor=mintedbackground,
+fontfamily=tt,
+linenos=true,
+numberblanklines=true,
+numbersep=5pt,
+gobble=0,
+frame=leftline,
+framerule=0.4pt,
+framesep=2mm,
+funcnamehighlighting=true,
+tabsize=4,
+obeytabs=false,
+mathescape=false
+samepage=false, %with this setting you can force the list to appear on the same page
+showspaces=false,
+showtabs =false,
+texcl=false,
+}
+
+\usepackage{scrhack}

@@ -1,0 +1,11 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: bff-pod
+  labels:
+    app: bff
+spec:
+  containers:
+  - name: bff-container
+    imagePullPolicy: IfNotPresent
+    image: bff:latest

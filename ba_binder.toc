@@ -1,0 +1,39 @@
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Einf\IeC {\"u}hrung in das Themengebiet}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Fragestellungen}{2}{section.1.2}
+\contentsline {section}{\numberline {1.3}Beschreibung des Demonstrators}{2}{section.1.3}
+\contentsline {section}{\numberline {1.4}Gliederung der Arbeit}{3}{section.1.4}
+\contentsline {chapter}{\numberline {2}Grundlagen}{5}{chapter.2}
+\contentsline {chapter}{\numberline {3}Stand der Technik}{7}{chapter.3}
+\contentsline {chapter}{\numberline {4}Umsetzung des Demonstrators}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Beschreibung der Docker-basierten CI/CD-Pipeline}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}Beschreibung der Kubernetes-basierten CI/CD-Pipeline}{10}{section.4.2}
+\contentsline {section}{\numberline {4.3}Verteilung der TLM-Demo in einem lokalen Kubernetes-Cluster}{10}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Manuelle Verteilung}{10}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Automatische Verteilung}{13}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Verteilung der TLM-Demo in einem realen Kubernetes-Cluster}{13}{section.4.4}
+\contentsline {chapter}{\numberline {5}Projektteam-Arbeiten}{15}{chapter.5}
+\contentsline {section}{\numberline {5.1}Zusammensetzung der Projektteams}{15}{section.5.1}
+\contentsline {section}{\numberline {5.2}Projektthema}{15}{section.5.2}
+\contentsline {chapter}{\numberline {6}Skalierung von Microservices}{17}{chapter.6}
+\contentsline {section}{\numberline {6.1}Skalierbarkeitsaspekte}{17}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Monitoring}{17}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Container}{17}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}...}{17}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}Implementierung der TLM-Demo in Go}{17}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}\IeC {\"U}berf\IeC {\"u}hrung des Dom\IeC {\"a}nenmodells}{17}{subsection.6.2.1}
+\contentsline {section}{\numberline {6.3}Vergleich zwischen einem Java- und Go-basierten Microservice}{17}{section.6.3}
+\contentsline {chapter}{\numberline {7}\IeC {\"A}nderungen am C\&M-Entwicklungsprozess}{19}{chapter.7}
+\contentsline {chapter}{\numberline {8}Praxisaufgabe}{21}{chapter.8}
+\contentsline {chapter}{\numberline {9}Fazit}{23}{chapter.9}
+\contentsline {section}{\numberline {9.1}Zusammenfassung}{23}{section.9.1}
+\contentsline {section}{\numberline {9.2}Ausblick}{23}{section.9.2}
+\contentsline {chapter}{\numberline {10}Anhang}{25}{chapter.10}
+\contentsline {section}{\numberline {A}Abk\IeC {\"u}rzungsverzeichnis}{25}{section.10.1}
+\contentsline {section}{\numberline {B}Abbildungsverzeichnis}{26}{section.10.2}
+\contentsline {section}{\numberline {C}Tabellenverzeichnis}{27}{section.10.3}
+\contentsline {section}{\numberline {D}Quelltextverzeichnis}{28}{section.10.4}
+\contentsline {section}{\numberline {E}Literaturanalysen}{29}{section.10.5}
+\contentsline {subsection}{\numberline {E.1}Titel der analysierten Publikation}{29}{subsection.10.5.1}
+\contentsline {section}{\numberline {F}Literaturverzeichnis}{31}{section.10.6}

@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bff-svc
+spec:
+  selector:
+    app: bff
+  type: LoadBalancer
+  ports:
+  - name: bff-port
+    port: 8081
+    nodePort: 30600

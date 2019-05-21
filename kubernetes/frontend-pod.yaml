@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: frontend-pod
+  labels:
+    app: frontend
+spec:
+  containers:
+  - name: frontend-container
+    imagePullPolicy: IfNotPresent
+    image: frontend:latest
+    env:
+        - name: GET_HOSTS_FROM
+          value: dns

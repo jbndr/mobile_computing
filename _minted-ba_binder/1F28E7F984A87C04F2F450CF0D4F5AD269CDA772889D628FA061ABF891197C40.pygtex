@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{kind}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{Pod}
+\PYG{n+nt}{apiVersion}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{v1}
+\PYG{n+nt}{metadata}\PYG{p}{:}
+  \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{frontend\PYGZhy{}pod}
+  \PYG{n+nt}{labels}\PYG{p}{:}
+    \PYG{n+nt}{app}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{frontend}
+\PYG{n+nt}{spec}\PYG{p}{:}
+  \PYG{n+nt}{containers}\PYG{p}{:}
+  \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{frontend\PYGZhy{}container}
+    \PYG{n+nt}{imagePullPolicy}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{IfNotPresent}
+    \PYG{n+nt}{image}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{frontend:latest}
+    \PYG{n+nt}{env}\PYG{p}{:}
+        \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{GET\PYGZus{}HOSTS\PYGZus{}FROM}
+          \PYG{n+nt}{value}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{dns}
+\end{Verbatim}

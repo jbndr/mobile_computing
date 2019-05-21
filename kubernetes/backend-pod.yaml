@@ -1,0 +1,11 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: backend-pod
+  labels:
+    app: backend
+spec:
+  containers:
+  - name: backend-container
+    imagePullPolicy: IfNotPresent
+    image: backend:latest

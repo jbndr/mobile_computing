@@ -1,0 +1,60 @@
+\ifglsentryexists{CM}{}%
+{%
+\gls@defglossaryentry{CM}%
+{%
+name={C\&M},%
+sort={C\&M},%
+type={acronym},%
+first={Cooperation \& Management (C\&M)},%
+firstplural={Cooperation \& Management (C\&M)s},%
+text={C\&M},%
+plural={C\&Ms},%
+description={Cooperation \& Management},%
+descriptionplural={Cooperation \& Management},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{KIT}{}%
+{%
+\gls@defglossaryentry{KIT}%
+{%
+name={KIT},%
+sort={KIT},%
+type={main},%
+first={Karlsruher Institut f\IeC {\"u}r Technologie (KIT)},%
+firstplural={Karlsruher Institut f\IeC {\"u}r Technologie (KIT)s},%
+text={KIT},%
+plural={KITs},%
+description={Karlsruher Institut für Technologie},%
+descriptionplural={Karlsruher Institut für Technologie},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
