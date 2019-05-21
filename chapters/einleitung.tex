@@ -44,20 +44,33 @@ Im Rahmen dieser Arbeit sollen die folgenden Fragen beantwortet werden.
 
 \section{Beschreibung des Demonstrators}
 
-Die vorliegende Arbeit beschäftigt sich mit der Einführung einer Kubernetes-basierten Infrastruktur bei C\&M.
-Hierzu wird ein Konzept vorgestellt, welches die Bereitstellung der TodoListManagement-Anwendung in ebendieser Infrastruktur demonstriert.
-Abbildung \ref{fig:demonstrator} veranschaulicht die verwendeten Komponenten.
+Teil dieser Arbeit ist die Erarbeitung eines Konzepts, welches die Verteilung von Microservices in einer Kubernetes-basierten Infrastruktur realisiert.
+Zur Demonstration des Konzepts wird ein bei C\&M entwickelter Microservice, eine TodoListManagement-Anwendung, verwendet.
 
-\begin{itemize}
-	\item Ziel: Bereitsetllung der TLM-Anwendung in einer Kubernetes-basierten Infrastruktur
-	\item Entwickler
-	\item CI Server
-	\item Deployment Cluster
-	\item Rolle von Helm
-	\item Monitoring
-\end{itemize}
+Wesentlich für die automatisierte Verteilung von Microservices ist eine CI/CD-Pipeline.
+Continious Integration beschreibt die kontinuierliche Integration des Codes in einem Repository.
+Dies bietet die Möglichkeit ausführbare Artefakte automatisch zu erzeugen.
+Continious Deployment ist eine Erweiterung des Konzepts der Continious Integration und beschreibt die automatisierte Verteilung der Anwendung.
+Dadurch wird sichergestellt, dass Änderungen an der Software immer einen Zustand einhalten, welcher ausgeliefert werden kann.
 
-\todo{Ziel: Bereitstellung der TLM-Anwendung in einer Kubernets-basierten Infrastruktur}
+Auch das Konzept der Kubernetes-basierten Infrastruktur, welche in der Abbildung \ref{fig:demonstrator} illustiert wird, basiert auf einer CI/CD-Pipeline.
+Die Infrastruktur besteht aus drei zentralen Komponenten: den Entwicklern, einem Continious Integration Server und einem Deployment Cluster.
+
+Eine notwendige Bedingung für den Start der CI/CD-Pipeline ist das Ablegen der Entwicklungsergebnisse in einem verteilten Repository.
+
+Der Continious Integration Server (CI-Server) identifiziert eine Änderung im Repository und stößt den weiteren Prozess an.
+Es erfolgt das Testen der Anwendung sowie die Erzeugung eines ausführbaren Artefakts.
+Anschließend wird ein Docker Image, welche das ausführbare Artefakt vom Betriebsystem abstrahiert, erzeugt.
+Das Docker Image wird in einer privaten Docker Registry hochgeladen.
+Die Docker Registry bietet eine Sammlung von Docker Images, sodass diese ohne großen Aufwand wiederverwendet werden können.
+Im nächsten Schritt wird die Verteilung der Anwendung vorbereitet. 
+Die Anwendung wird mithilfe des Werkzeugs Helm, einer Paketverwaltungsanwendung für Kubernetes, im Kubernetes Cluster installiert.
+
+Die abschließende Komponente der CI/CD-Pipeline stellt das Deployment Cluster dar.
+Das Kubernetes Cluster besteht aus verschiedenen Knoten, die entweder eine Maschine oder virtuelle Maschine sein können, die miteinander kommunizieren.
+Der Hauptvorteil von Kubernetes ist dabei die Einhaltung eines geforderten Ist-Zustands.
+Dies ist die zentrale Grundlage für eine hohe Verfügbarkeit der Anwendung und ermöglicht die Skalierung von Microservices.
+Der Zustand des Clusters wird durch ein automatisch verteiltes Monitoring überwacht und kann zur Alarmierung eines kritischen Systemzustands verwendet werden.
 
 \begin{figure}[h]
 	\centering
